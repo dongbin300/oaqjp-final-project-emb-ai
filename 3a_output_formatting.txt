@@ -1,0 +1,44 @@
+def emotion_detector(text_to_analyze):
+    url = 'https://sn-watson-emotion.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/EmotionPredict'
+    headers = {"grpc-metadata-mm-model-id": "emotion_aggregated-workflow_lang_en_stock"}
+    input_json = {"raw_document": {"text": text_to_analyze}}
+    
+    response = requests.post(url, headers=headers, json=input_json)
+    response_data = response.text
+    
+    parsed_response = json.loads(response_data)
+    
+    print("DEBUG - Full response structure:", json.dumps(parsed_response, indent=2))
+    
+    emotions = {}
+    
+    if 'emotion_predictions' in parsed_response:
+        emotions_list = parsed_response['emotion_predictions'][0]['emotions']
+    elif 'emotions' in parsed_response:
+        emotions_list = parsed_response['emotions']
+    else:
+        for key, value in parsed_response.items():
+            if isinstance(value, list) and len(value) > 0 and 'emotions' in value[0]:
+                emotions_list = value[0]['emotions']
+                break
+        else:
+            emotions_list = []
+    
+    emotion_map = {'anger': 0, 'disgust': 0, 'fear': 0, 'joy': 0, 'sadness': 0}
+    
+    for emotion_data in emotions_list:
+        emotion_name = emotion_data.get('emotion', '').lower()
+        score = emotion_data.get('score', 0)
+        if emotion_name in emotion_map:
+            emotion_map[emotion_name] = score
+    
+    dominant_emotion = max(emotion_map, key=emotion_map.get)
+    
+    return {
+        'anger': emotion_map['anger'],
+        'disgust': emotion_map['disgust'],
+        'fear': emotion_map['fear'],
+        'joy': emotion_map['joy'],
+        'sadness': emotion_map['sadness'],
+        'dominant_emotion': dominant_emotion
+    }

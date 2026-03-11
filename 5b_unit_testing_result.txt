@@ -1,0 +1,217 @@
+DEBUG - Full response structure: {
+  "emotionPredictions": [
+    {
+      "emotion": {
+        "anger": 0.6674731,
+        "disgust": 0.022848725,
+        "fear": 0.09749009,
+        "joy": 0.011863918,
+        "sadness": 0.1953058
+      },
+      "target": "",
+      "emotionMentions": [
+        {
+          "span": {
+            "begin": 0,
+            "end": 26,
+            "text": "I am really mad about this"
+          },
+          "emotion": {
+            "anger": 0.6674731,
+            "disgust": 0.022848725,
+            "fear": 0.09749009,
+            "joy": 0.011863918,
+            "sadness": 0.1953058
+          }
+        }
+      ]
+    }
+  ],
+  "producerId": {
+    "name": "Ensemble Aggregated Emotion Workflow",
+    "version": "0.0.1"
+  }
+}
+.DEBUG - Full response structure: {
+  "emotionPredictions": [
+    {
+      "emotion": {
+        "anger": 0.11452735,
+        "disgust": 0.9193782,
+        "fear": 0.055274334,
+        "joy": 0.0023334245,
+        "sadness": 0.06884794
+      },
+      "target": "",
+      "emotionMentions": [
+        {
+          "span": {
+            "begin": 0,
+            "end": 40,
+            "text": "I feel disgusted just hearing about this"
+          },
+          "emotion": {
+            "anger": 0.11452735,
+            "disgust": 0.9193782,
+            "fear": 0.055274334,
+            "joy": 0.0023334245,
+            "sadness": 0.06884794
+          }
+        }
+      ]
+    }
+  ],
+  "producerId": {
+    "name": "Ensemble Aggregated Emotion Workflow",
+    "version": "0.0.1"
+  }
+}
+FDEBUG - Full response structure: {
+  "emotionPredictions": [
+    {
+      "emotion": {
+        "anger": 0.0068210675,
+        "disgust": 0.00360616,
+        "fear": 0.9907291,
+        "joy": 0.0057615982,
+        "sadness": 0.073330835
+      },
+      "target": "",
+      "emotionMentions": [
+        {
+          "span": {
+            "begin": 0,
+            "end": 40,
+            "text": "I am really afraid that this will happen"
+          },
+          "emotion": {
+            "anger": 0.0068210675,
+            "disgust": 0.00360616,
+            "fear": 0.9907291,
+            "joy": 0.0057615982,
+            "sadness": 0.073330835
+          }
+        }
+      ]
+    }
+  ],
+  "producerId": {
+    "name": "Ensemble Aggregated Emotion Workflow",
+    "version": "0.0.1"
+  }
+}
+FDEBUG - Full response structure: {
+  "emotionPredictions": [
+    {
+      "emotion": {
+        "anger": 0.01388365,
+        "disgust": 0.00850114,
+        "fear": 0.018487887,
+        "joy": 0.83237535,
+        "sadness": 0.17257097
+      },
+      "target": "",
+      "emotionMentions": [
+        {
+          "span": {
+            "begin": 0,
+            "end": 23,
+            "text": "I am glad this happened"
+          },
+          "emotion": {
+            "anger": 0.01388365,
+            "disgust": 0.00850114,
+            "fear": 0.018487887,
+            "joy": 0.83237535,
+            "sadness": 0.17257097
+          }
+        }
+      ]
+    }
+  ],
+  "producerId": {
+    "name": "Ensemble Aggregated Emotion Workflow",
+    "version": "0.0.1"
+  }
+}
+FDEBUG - Full response structure: {
+  "emotionPredictions": [
+    {
+      "emotion": {
+        "anger": 0.0063314,
+        "disgust": 0.005223638,
+        "fear": 0.074054584,
+        "joy": 0.0046975184,
+        "sadness": 0.9819713
+      },
+      "target": "",
+      "emotionMentions": [
+        {
+          "span": {
+            "begin": 0,
+            "end": 22,
+            "text": "I am so sad about this"
+          },
+          "emotion": {
+            "anger": 0.0063314,
+            "disgust": 0.005223638,
+            "fear": 0.074054584,
+            "joy": 0.0046975184,
+            "sadness": 0.9819713
+          }
+        }
+      ]
+    }
+  ],
+  "producerId": {
+    "name": "Ensemble Aggregated Emotion Workflow",
+    "version": "0.0.1"
+  }
+}
+F
+======================================================================
+FAIL: test_disgust (__main__.TestEmotionDetection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/project/final_project/test_emotion_detection.py", line 16, in test_disgust
+    self.assertEqual(result['dominant_emotion'], 'disgust')
+AssertionError: 'anger' != 'disgust'
+- anger
++ disgust
+
+
+======================================================================
+FAIL: test_fear (__main__.TestEmotionDetection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/project/final_project/test_emotion_detection.py", line 24, in test_fear
+    self.assertEqual(result['dominant_emotion'], 'fear')
+AssertionError: 'anger' != 'fear'
+- anger
++ fear
+
+
+======================================================================
+FAIL: test_joy (__main__.TestEmotionDetection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/project/final_project/test_emotion_detection.py", line 8, in test_joy
+    self.assertEqual(result['dominant_emotion'], 'joy')
+AssertionError: 'anger' != 'joy'
+- anger
++ joy
+
+
+======================================================================
+FAIL: test_sadness (__main__.TestEmotionDetection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/project/final_project/test_emotion_detection.py", line 20, in test_sadness
+    self.assertEqual(result['dominant_emotion'], 'sadness')
+AssertionError: 'anger' != 'sadness'
+- anger
++ sadness
+
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.618s
